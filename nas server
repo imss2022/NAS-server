@@ -1,0 +1,10 @@
+---
+- name: Check disk space C for patch
+  hosts: vmwin
+  gather_facts: no
+  tasks:
+    - name: 'Check free space in C:'
+      win_shell: 'Get-PSDrive C | Select-Object Free | ft -HideTableHeaders'
+      register: freespace
+    - debug:
+        var: freespace
